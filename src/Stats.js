@@ -167,7 +167,7 @@ Stats.Panel = function ( name, fg, bg ) {
 			context.globalAlpha = 0.9;
 			context.fillRect( GRAPH_X + GRAPH_WIDTH - PR, GRAPH_Y, PR, round( ( 1 - ( value / maxValue ) ) * GRAPH_HEIGHT ) );
 
-            metric.innerHTML = "<div class=" + name + " style='font-size:12px;background:#1a1a38;color:white;margin-top:-4px;padding:3px;'> " + name +  ":" + value.toFixed(2) + "</div>";
+            		metric.innerHTML = "<div class=" + name + " style='font-size:12px;background:#1a1a38;color:white;margin-top:-4px;padding:3px;'> " + name +  ":" + value.toFixed(2) + "</div>";
 		}
 
 	};
