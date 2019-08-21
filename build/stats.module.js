@@ -8,6 +8,7 @@ var Stats = function () {
 
 	var container = document.createElement( 'div' );
 	container.style.cssText = 'position:fixed;top:0;left:0;cursor:pointer;opacity:0.9;z-index:10000';
+    container.id = 'performanceMetrics';
 	container.addEventListener( 'click', function ( event ) {
 
 		event.preventDefault();
@@ -119,7 +120,11 @@ Stats.Panel = function ( name, fg, bg ) {
 			GRAPH_X = 3 * PR, GRAPH_Y = 15 * PR,
 			GRAPH_WIDTH = 74 * PR, GRAPH_HEIGHT = 30 * PR;
 
+    var container = document.createElement( 'div' );
 	var canvas = document.createElement( 'canvas' );
+    var metric = document.createElement( 'div' );
+    container.appendChild(canvas);
+    container.appendChild(metric);
 	canvas.width = WIDTH;
 	canvas.height = HEIGHT;
 	canvas.style.cssText = 'width:80px;height:48px';
@@ -141,7 +146,7 @@ Stats.Panel = function ( name, fg, bg ) {
 
 	return {
 
-		dom: canvas,
+		dom: container,
 
 		update: function ( value, maxValue ) {
 
@@ -162,6 +167,7 @@ Stats.Panel = function ( name, fg, bg ) {
 			context.globalAlpha = 0.9;
 			context.fillRect( GRAPH_X + GRAPH_WIDTH - PR, GRAPH_Y, PR, round( ( 1 - ( value / maxValue ) ) * GRAPH_HEIGHT ) );
 
+            metric.innerHTML = "<div class=" + name + " style='font-size:12px;background:#1a1a38;color:white;margin-top:-4px;padding:3px;'> " + name +  ":" + value.toFixed(2) + "</div>";
 		}
 
 	};
